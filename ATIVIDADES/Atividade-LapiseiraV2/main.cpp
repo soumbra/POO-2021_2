@@ -27,23 +27,3 @@ int main()
     }
 
 }
-/*
-    Grafite ui(0.5, "4B", 14);
-    cout << ui << '\n';
-
-    Lapiseira lata{0.5};
-    cout << lata << '\n';
-
-    lata.inserirGrafite(make_shared<Grafite>(ui));
-    lata.inserirGrafite(make_shared<Grafite>(0.5, "6B", 17));
-    cout << lata << '\n';
-    lata.pull();
-    lata.escreverFolha();
-    lata.escreverFolha();
-    cout << lata << '\n';
-    lata.remover();
-    lata.pull();
-    lata.escreverFolha();
-    lata.escreverFolha();
-    cout << lata << '\n';
-*/
