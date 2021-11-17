@@ -17,6 +17,15 @@ private:
         return true;
     }
 
+    bool foneDuplicado(Fone fone) {
+        for (int i = 0; i < (int) this->fones.size(); i++) {
+            if ((this->fones[i].getId() == fone.getId()) && ( this->fones[i].getNumber() == fone.getNumber())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 public:
     Contact(string name = "") : name{name} {};
 
@@ -32,6 +41,12 @@ public:
         if (!fone.validate(fone.getNumber())) {
             return false;
         }
+        
+        if(foneDuplicado(fone) == true) {
+            cout << "Fone duplicado" << '\n';
+            return false;
+        }
+
         this->fones.push_back(fone);
         cout << "Fone adicionado" << '\n';
         return true;
