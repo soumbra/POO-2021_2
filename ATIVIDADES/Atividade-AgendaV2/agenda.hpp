@@ -7,7 +7,7 @@ class Agenda{
 
     int findPos(string name) {
         for (int i = 0; i < (int) contacts.size(); i++) {
-            if (contacts[i].getName() == name) {
+            if (this->contacts[i].getName() == name) {
                 return i;
             }
         }
@@ -64,7 +64,7 @@ public:
         int pos = findPos(contact.getName());
         vector<Fone> fones = contact.getFones();
         for (int i = 0; i < (int) fones.size(); i++) {
-            contacts[pos].addFone(fones[i]);
+            this->contacts[pos].addFone(fones[i]);
         }
 
     }
@@ -83,7 +83,7 @@ public:
     void rmContact(string name, int index) {
         int pos = findPos(name);
         if (pos != -1) {
-            contacts[pos].rmFone(index);
+            this->contacts[pos].rmFone(index);
             return;
         }
         cout << "Contato nao existe" << '\n';
@@ -92,21 +92,21 @@ public:
 
     vector<Contact> search(string pattern){
         vector<Contact> contadosEncontrados;
-        for (int i = 0; i < (int)contacts.size(); i++) {
-            if (achouNome(contacts[i].getName(), pattern) == true) {
-                contadosEncontrados.push_back(contacts[i]);
+        for (int i = 0; i < (int)this->contacts.size(); i++) {
+            if (achouNome(this->contacts[i].getName(), pattern) == true) {
+                contadosEncontrados.push_back(this->contacts[i]);
             }
         }
 
-        for (int i = 0; i < (int)contacts.size(); i++) {
-            if (achouId(contacts[i].getFones(), pattern) == true && estaContido(contacts[i].getName(), contadosEncontrados) == false) {
-                contadosEncontrados.push_back(contacts[i]);
+        for (int i = 0; i < (int)this->contacts.size(); i++) {
+            if (achouId(this->contacts[i].getFones(), pattern) == true && estaContido(this->contacts[i].getName(), contadosEncontrados) == false) {
+                contadosEncontrados.push_back(this->contacts[i]);
             }
         }
 
-        for (int i = 0; i < (int)contacts.size(); i++) {
-            if (achouFone(contacts[i].getFones(), pattern) == true) {
-                contadosEncontrados.push_back(contacts[i]);
+        for (int i = 0; i < (int)this->contacts.size(); i++) {
+            if (achouFone(this->contacts[i].getFones(), pattern) == true) {
+                contadosEncontrados.push_back(this->contacts[i]);
             }
         }
 
@@ -123,7 +123,7 @@ public:
 
     void ordenarContatos() {
         vector<string> nomes;
-        for (int i = 0; i < (int) contacts.size(); i++) {
+        for (int i = 0; i < (int) this->contacts.size(); i++) {
             string j = this->contacts[i].getName();
             nomes.push_back(j);
         }
@@ -132,9 +132,9 @@ public:
 
         vector<Contact> ordenados;
 
-        for (int i = 0; i < (int) contacts.size(); i++) {
+        for (int i = 0; i < (int) this->contacts.size(); i++) {
             int j = findPos(nomes[i]);
-            ordenados.push_back(contacts[j]);
+            ordenados.push_back(this->contacts[j]);
         }
         
         this->contacts = ordenados;
