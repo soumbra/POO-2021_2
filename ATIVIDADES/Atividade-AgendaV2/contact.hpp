@@ -42,7 +42,7 @@ public:
             return false;
         }
         
-        if(foneDuplicado(fone) == true) {
+        if (foneDuplicado(fone) == true) {
             cout << "Fone duplicado" << '\n';
             return false;
         }

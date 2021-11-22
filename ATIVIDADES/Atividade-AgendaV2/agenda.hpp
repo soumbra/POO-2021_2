@@ -22,7 +22,7 @@ class Agenda{
     }
 
     bool achouFone(vector<Fone> fones, string pattern) {
-        for(int i = 0; i < (int)fones.size(); i++){
+        for (int i = 0; i < (int)fones.size(); i++) {
             if (fones[i].getNumber().find(pattern) != string::npos) {
                 return true;
             } 
@@ -31,7 +31,7 @@ class Agenda{
     }
 
     bool achouId(vector<Fone> fones, string pattern) {
-        for(int i = 0; i < (int)fones.size(); i++){
+        for (int i = 0; i < (int)fones.size(); i++) {
             if (fones[i].getId().find(pattern) != string::npos) {
                 return true;
             } 
@@ -40,7 +40,7 @@ class Agenda{
     }
 
     bool estaContido(string name, vector<Contact> contatos) {
-        for(int i = 0; i < (int)contatos.size(); i++){
+        for (int i = 0; i < (int)contatos.size(); i++) {
             if (name == contatos[i].getName()) {
                 return true;
             }
@@ -56,7 +56,7 @@ public:
     } 
 
     void addContact(Contact contact) {
-        if(findPos(contact.getName()) == -1){
+        if (findPos(contact.getName()) == -1) {
             this->contacts.push_back(contact);
             return;
         }
@@ -99,7 +99,7 @@ public:
         }
 
         for (int i = 0; i < (int)contacts.size(); i++) {
-            if (achouId(contacts[i].getFones(), pattern) == true &&estaContido(contacts[i].getName(), contadosEncontrados) == false) {
+            if (achouId(contacts[i].getFones(), pattern) == true && estaContido(contacts[i].getName(), contadosEncontrados) == false) {
                 contadosEncontrados.push_back(contacts[i]);
             }
         }
@@ -141,7 +141,7 @@ public:
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Agenda& a) {
-        if((int) a.contacts.size() == 0){
+        if ((int) a.contacts.size() == 0) {
             os << "Agenda vazia ";
         } else {
             for (int i = 0; i < (int) a.contacts.size(); i++) {
