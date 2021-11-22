@@ -14,15 +14,6 @@ class Agenda{
         return -1;
     }
 
-    bool contExiste(string name) {
-        for (int i = 0; i < (int) contacts.size(); i++) {
-            if (contacts[i].getName() == name) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     bool achouNome(string nome, string pattern) {
         if (nome.find(pattern) != string::npos) {
             return true;
@@ -46,9 +37,16 @@ class Agenda{
             } 
         }
         return false;
-    }    
+    }
 
-
+    bool estaContido(string name, vector<Contact> contatos) {
+        for(int i = 0; i < (int)contatos.size(); i++){
+            if (name == contatos[i].getName()) {
+                return true;
+            }
+        }
+        return false;   
+    }
 
 public:
     Agenda(){};
@@ -58,7 +56,7 @@ public:
     } 
 
     void addContact(Contact contact) {
-        if(!contExiste(contact.getName())){
+        if(findPos(contact.getName()) == -1){
             this->contacts.push_back(contact);
             return;
         }
@@ -95,21 +93,29 @@ public:
     vector<Contact> search(string pattern){
         vector<Contact> contadosEncontrados;
         for (int i = 0; i < (int)contacts.size(); i++) {
-            if (achouNome(contacts[i].getName(), pattern) == true || achouId(contacts[i].getFones(), pattern) == true) {
+            if (achouNome(contacts[i].getName(), pattern) == true) {
                 contadosEncontrados.push_back(contacts[i]);
-                cout << contadosEncontrados[i] << '\n';
+            }
+        }
+
+        for (int i = 0; i < (int)contacts.size(); i++) {
+            if (achouId(contacts[i].getFones(), pattern) == true &&estaContido(contacts[i].getName(), contadosEncontrados) == false) {
+                contadosEncontrados.push_back(contacts[i]);
             }
         }
 
         for (int i = 0; i < (int)contacts.size(); i++) {
             if (achouFone(contacts[i].getFones(), pattern) == true) {
                 contadosEncontrados.push_back(contacts[i]);
-                cout << contadosEncontrados[i] << '\n';
             }
         }
 
-        if((int)contadosEncontrados.size() == 0){
+        if ((int)contadosEncontrados.size() == 0) {
             cout << "Nada encontrado" << '\n';
+        } else {
+            for (int i = 0; i < (int) contadosEncontrados.size(); i++) {
+                cout << contadosEncontrados[i] << '\n';
+            }
         }
 
         return contadosEncontrados;

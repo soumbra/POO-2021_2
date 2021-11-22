@@ -30,7 +30,7 @@ int main()
 
     //procurando por palavras chaves
     agenda.search("88");
-    agenda.search("ro");
+    agenda.search("rou");
     
     //Ordenando os contatos
     agenda.ordenarContatos();
