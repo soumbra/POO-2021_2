@@ -1,7 +1,6 @@
 #include "fone.hpp"
 #include "contact.hpp"
 #include "agenda.hpp"
-//#include <sstream>
 
 int main() 
 {
@@ -29,11 +28,9 @@ int main()
     agenda.rmContact("Raimundao");
 
     //procurando por palavras chaves
-    agenda.search("88");
+    agenda.search("873");
     agenda.search("rou");
     
-    //Ordenando os contatos
-    agenda.ordenarContatos();
     cout << agenda << '\n';
 
 }

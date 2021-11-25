@@ -1,6 +1,14 @@
 #pragma once
 #include "contact.hpp"
 #include <algorithm>
+#include <sstream>
+
+template <typename T>
+std::string to_string(T t) {
+    std::stringstream ss;
+    ss << t;
+    return ss.str();
+}
 
 class Agenda{
     vector<Contact> contacts;
@@ -14,50 +22,22 @@ class Agenda{
         return -1;
     }
 
-    bool achouNome(string nome, string pattern) {
-        if (nome.find(pattern) != string::npos) {
-            return true;
-        }
-        return false;
-    }
-
-    bool achouFone(vector<Fone> fones, string pattern) {
-        for (int i = 0; i < (int)fones.size(); i++) {
-            if (fones[i].getNumber().find(pattern) != string::npos) {
-                return true;
-            } 
-        }
-        return false;
-    }
-
-    bool achouId(vector<Fone> fones, string pattern) {
-        for (int i = 0; i < (int)fones.size(); i++) {
-            if (fones[i].getId().find(pattern) != string::npos) {
-                return true;
-            } 
-        }
-        return false;
-    }
-
-    bool estaContido(string name, vector<Contact> contatos) {
-        for (int i = 0; i < (int)contatos.size(); i++) {
-            if (name == contatos[i].getName()) {
-                return true;
-            }
-        }
-        return false;   
-    }
-
 public:
     Agenda(){};
 
-    Contact getContact(string name) {
-        return this->contacts[findPos(name)];
+    Contact* getContact(string name) {
+        if (!findPos(name)) {
+            return nullptr;
+        }
+        return &contacts[findPos(name)];
     } 
 
     void addContact(Contact contact) {
         if (findPos(contact.getName()) == -1) {
             this->contacts.push_back(contact);
+            sort(contacts.begin(), contacts.end(), [] (auto a, auto b){ 
+                return a.getName() < b.getName();
+            }); 
             return;
         }
         
@@ -92,21 +72,10 @@ public:
 
     vector<Contact> search(string pattern){
         vector<Contact> contadosEncontrados;
-        for (int i = 0; i < (int)this->contacts.size(); i++) {
-            if (achouNome(this->contacts[i].getName(), pattern) == true) {
-                contadosEncontrados.push_back(this->contacts[i]);
-            }
-        }
-
-        for (int i = 0; i < (int)this->contacts.size(); i++) {
-            if (achouId(this->contacts[i].getFones(), pattern) == true && estaContido(this->contacts[i].getName(), contadosEncontrados) == false) {
-                contadosEncontrados.push_back(this->contacts[i]);
-            }
-        }
-
-        for (int i = 0; i < (int)this->contacts.size(); i++) {
-            if (achouFone(this->contacts[i].getFones(), pattern) == true) {
-                contadosEncontrados.push_back(this->contacts[i]);
+        for (auto contato : this->contacts) {
+            auto texto = to_string(contato);
+            if (texto.find(pattern) != std::string::npos) {
+                contadosEncontrados.push_back(contato);
             }
         }
 
@@ -119,25 +88,6 @@ public:
         }
 
         return contadosEncontrados;
-    }
-
-    void ordenarContatos() {
-        vector<string> nomes;
-        for (int i = 0; i < (int) this->contacts.size(); i++) {
-            string j = this->contacts[i].getName();
-            nomes.push_back(j);
-        }
-
-        sort(nomes.begin(), nomes.end());
-
-        vector<Contact> ordenados;
-
-        for (int i = 0; i < (int) this->contacts.size(); i++) {
-            int j = findPos(nomes[i]);
-            ordenados.push_back(this->contacts[j]);
-        }
-        
-        this->contacts = ordenados;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Agenda& a) {
