@@ -74,7 +74,7 @@ public:
         vector<Contact> contadosEncontrados;
         for (auto contato : this->contacts) {
             auto texto = to_string(contato);
-            if (texto.find(pattern) != std::string::npos) {
+            if (texto.find(pattern) != string::npos) {
                 contadosEncontrados.push_back(contato);
             }
         }
