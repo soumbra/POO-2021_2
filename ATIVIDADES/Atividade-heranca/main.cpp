@@ -13,7 +13,7 @@ public:
 
     virtual ~Veiculo() {};
 
-    virtual void dirigir() const{
+    virtual void dirigir() const {
         if (this->funcionando) {
             cout << "Dirigindo.." << '\n';
             cout << "Chegou ao destino" << '\n';
@@ -111,19 +111,19 @@ public:
 
     virtual ~Carro() {};
     
-    virtual void guardarCoisas() const{
+    virtual void guardarCoisas() const {
         cout << "Guardando suas coisas no porta-malas." << '\n';
     }
 
-    virtual void ligarSom() const{
+    virtual void ligarSom() const {
         cout << "Agora o som esta ligado" << '\n';
     }
 
-    virtual void desligarSom() const{
+    virtual void desligarSom() const {
         cout << "Agora o som esta desligado" << '\n';
     }
 
-    virtual void buzinar() const{
+    virtual void buzinar() const {
         cout << "biiiiiiiiiiiiiiiiii" << '\n';
     }
 
@@ -165,6 +165,5 @@ int main()
     gol.buzinar();
     gol.guardarCoisas();
     gol.desligarSom();
-
 
 }
