@@ -10,23 +10,23 @@ class Client{
 public:
     Client(string clientId) : clientId{clientId} {};
 
-    virtual void addAccount(const shared_ptr<Account>& account) {
+    void addAccount(const shared_ptr<Account>& account) {
         this->accounts.push_back(account);
     }
 
-    virtual string getClientId() const {
+    string getClientId() const {
         return this->clientId;
     }
 
-    virtual vector<shared_ptr<Account>> getAccounts() const {
+    vector<shared_ptr<Account>> getAccounts() const {
         return this->accounts;
     }
 
-    virtual void setClientId(string newClientId) {
+    void setClientId(string newClientId) {
         this->clientId = newClientId;
     }
 
-    virtual void setAccounts(vector<shared_ptr<Account>> accounts) {
+    void setAccounts(vector<shared_ptr<Account>> accounts) {
         this->accounts = accounts;
     }
 

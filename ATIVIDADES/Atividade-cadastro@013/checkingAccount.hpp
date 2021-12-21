@@ -8,7 +8,7 @@ public:
         this->type = "CC";
     };
 
-    virtual void monthlyUpdate() {
+    virtual void monthlyUpdate() override {
         this->balance -= 20;
     }
 };

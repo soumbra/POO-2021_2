@@ -14,6 +14,8 @@ protected:
 public:
     Account(int id, string clientId) : id(id), clientId(clientId) {};
 
+    virtual ~Account() {};
+
     virtual void monthlyUpdate() = 0;
 
     virtual void withdraw(float value) {

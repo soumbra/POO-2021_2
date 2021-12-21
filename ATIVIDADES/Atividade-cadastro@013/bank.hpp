@@ -9,7 +9,7 @@ class BankAgency{
     map<int, shared_ptr<Account>> accounts;
     int nextAccountId {0};
 
-    virtual shared_ptr<Account> getAccount(int id) {
+    shared_ptr<Account> getAccount(int id) {
         auto it = this->accounts.find(id);
         if (it == this->accounts.end()) {
             throw "Conta nao encontrada";
@@ -21,7 +21,7 @@ class BankAgency{
 public:
     BankAgency() {};
 
-    virtual void addAccount(string clientId) {
+    void addAccount(string clientId) {
         auto it = this->clients.find(clientId);
         if(it != this->clients.end()) {
             throw "Voce ja e nosso client";
@@ -44,26 +44,26 @@ public:
 
     }
 
-    virtual void withdraw(int idConta, float value) {
+    void withdraw(int idConta, float value) {
         shared_ptr<Account> conta {getAccount(idConta)};
         conta->withdraw(value);
 
     }
 
-    virtual void deposit(int idConta, float value) {
+    void deposit(int idConta, float value) {
         shared_ptr<Account> conta {getAccount(idConta)};
         conta->deposit(value);
 
     }
 
-    virtual void transfer(int contaDe, int contaPara, float value) {
+    void transfer(int contaDe, int contaPara, float value) {
         shared_ptr<Account> conta {getAccount(contaDe)};
         shared_ptr<Account> conta2 {getAccount(contaPara)};
 
         conta->transfer(conta2, value);
     }
 
-    virtual void monthlyUpdate() {
+    void monthlyUpdate() {
         for (auto it = this->accounts.begin(); it != this->accounts.end(); ++it) {
             it->second->monthlyUpdate();
         }
