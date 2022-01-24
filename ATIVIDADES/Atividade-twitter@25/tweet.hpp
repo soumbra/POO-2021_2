@@ -1,6 +1,11 @@
 #pragma once
 #include <iostream>
+#include <memory>
+#include <vector>
+#include <map>
+#include <sstream>
 #include <set>
+#include <algorithm>
 
 using namespace std;
 

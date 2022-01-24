@@ -1,7 +1,11 @@
 #pragma once
-#include <map>
+#include <iostream>
 #include <memory>
 #include <vector>
+#include <map>
+#include <sstream>
+#include <set>
+#include <algorithm>
 #include "tweet.hpp"
 
 class Inbox{

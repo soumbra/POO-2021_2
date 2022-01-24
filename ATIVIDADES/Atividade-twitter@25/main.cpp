@@ -1,4 +1,10 @@
+#include <iostream>
+#include <memory>
+#include <vector>
+#include <map>
 #include <sstream>
+#include <set>
+#include <algorithm>
 #include "tweet.hpp"
 #include "inbox.hpp"
 #include "user.hpp"
