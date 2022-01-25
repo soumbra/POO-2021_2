@@ -11,17 +11,6 @@
 #include "controller.hpp"
 #include "auxiliar.hpp"
 
-class TweetException : public exception {
-    string message;
-public:
-    TweetException(const string& message) : 
-        message(message) {
-    }
-    const char* what() const noexcept override {
-        return message.c_str(); 
-    }
-};
-
 vector<string> getcmd() {
     string line;
     getline(cin, line);
@@ -62,8 +51,8 @@ int main()
             } else {
                 cout << "fail: comando invalido" << '\n';
             }
-        } catch (TweetException &e) {
-            cout << e.what() << '\n';
+        } catch(const char* e) {
+            cout << "fail: " << e << '\n';
         }
     }
     return 0;

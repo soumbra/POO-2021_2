@@ -19,11 +19,11 @@ public:
 
     void follow(User * other) {
         auto it = following.find(other->username);
-        if (it == following.end() && it->second != this) {
+        if (it == following.end() && other != this) {
             this->following[other->username] = other;
             other->followers[this->username] =  this;
         } else {
-            throw "Voce ja segue esses sujeito";
+            throw "Voce ja segue esses sujeito ou esta tentando se seguir";
         } 
     }
 
