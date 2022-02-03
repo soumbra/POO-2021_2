@@ -61,7 +61,7 @@ public:
             if(this->bico->getTamanho() >= 10){
                 cout << "Folha escrita" << '\n';
             } else {
-            cout << "Folha incompleta" << '\n';
+                cout << "Folha incompleta" << '\n';
             }
         }
     }
