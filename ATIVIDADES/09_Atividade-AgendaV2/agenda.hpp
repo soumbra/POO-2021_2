@@ -4,8 +4,8 @@
 #include <sstream>
 
 template <typename T>
-std::string to_string(T t) {
-    std::stringstream ss;
+string to_string(T t) {
+    stringstream ss;
     ss << t;
     return ss.str();
 }
@@ -90,7 +90,7 @@ public:
         return contadosEncontrados;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Agenda& a) {
+    friend ostream& operator<<(ostream& os, const Agenda& a) {
         if ((int) a.contacts.size() == 0) {
             os << "Agenda vazia ";
         } else {

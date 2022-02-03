@@ -61,7 +61,7 @@ public:
         return true;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Contact& c) {
+    friend ostream& operator<<(ostream& os, const Contact& c) {
         os << c.prefix << " ";
         os << c.name << " ";
         for (int i = 0; i < (int) c.fones.size(); i++) {

@@ -30,7 +30,7 @@ public:
         this->accounts = accounts;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Client& a) {
+    friend ostream& operator<<(ostream& os, const Client& a) {
         os << a.clientId << '[';
         for(int i = 0; i < (int)a.accounts.size(); i++){
             os << a.accounts[i]->getId() << ((i+1 < (int)a.accounts.size()) ? "," : ""); 

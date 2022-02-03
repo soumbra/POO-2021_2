@@ -31,7 +31,7 @@ public:
         return true;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Fone& fone) {
+    friend ostream& operator<<(std::ostream& os, const Fone& fone) {
         os << fone.id  << ":" << fone.number;
         return os;
     }

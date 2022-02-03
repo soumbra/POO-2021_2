@@ -10,7 +10,15 @@ struct Pessoa {
         nome{nome}, idade{idade} {
     }
 
-    friend std::ostream& operator <<(std::ostream& os, const Pessoa& pessoa) {
+    string getNome() {
+        return this->nome;
+    }
+
+    int getAge() {
+        return this->idade;
+    }
+
+    friend ostream& operator <<(ostream& os, const Pessoa& pessoa) {
         os << "Nome: " << pessoa.nome << " ";
         os << "Idade: " << pessoa.idade << " anos";
 
@@ -19,12 +27,23 @@ struct Pessoa {
 };
 
 struct Motinha {
-    Pessoa* pessoa;
+    Pessoa* pessoa = nullptr;
     int potencia;
-    int tempo;
+    int tempo = 0;
 
-    Motinha (Pessoa* pessoa = nullptr, int potencia = 1, int tempo = 0):
-        pessoa{pessoa}, potencia{potencia}, tempo{tempo} {
+    Motinha (int potencia = 1): potencia{potencia} {
+    }
+
+    int getPotencia() {
+        return this->potencia;
+    }
+
+    int getTempo() {
+        return this->tempo;
+    }
+
+    Pessoa* getPessoa() {
+        return this->pessoa;
     }
 
     bool subir(Pessoa* pessoa) {
@@ -52,16 +71,19 @@ struct Motinha {
         tempo += tempoComprar;
     }
 
-    void dirigirTempo() {
-        if (this->pessoa->idade <= 10 && tempo > 0){
-            cout << "Voce pode andar de motinha" << '\n';
-            int contador{0};
-            while (tempo !=0) {
-                tempo--;
-                contador++;
+    void dirigirTempo(int tempo) {
+        if (this->pessoa->idade <= 10 && this->tempo > 0 && this->pessoa != nullptr) {
+            int res = this->tempo - tempo;
+            if (res >= 0) {
+                this->tempo -= tempo;
+                cout << "Voce andou por " << tempo << " minutos" << '\n';
+            } else {
+                this->tempo = 0;
+                cout << "Tempo acabou antes do fim do trajeto" << '\n';
             }
-            cout << "Voce andou por " << contador << " minutos" << '\n';
-        }    
+        } else {
+            cout << "Voce nao pode andar de motinha ou voce nao existe" << '\n';
+        }
     }
 
     void buzinar() {
@@ -71,24 +93,33 @@ struct Motinha {
         }
         cout << 'm' << '\n';
     }
+
+    friend ostream& operator <<(ostream& os, const Motinha& m) {
+        os << "Potencia: " << m.potencia << ", Minutos: " << m.tempo << ", Pessoa: [" << *m.pessoa << ']';
+        return os;
+    }
     
 };
 
 int main() 
 {
     Pessoa jorjin ("barbosinha", 10);
+    Pessoa larouci ("larouci ", 12);
     cout << jorjin << '\n';
     
-    Motinha moto(&jorjin, 7, 5);
+    Motinha moto(7);
+    moto.subir(&jorjin);
+    moto.subir(&larouci);
     moto.comprarTempo(5);
-    moto.dirigirTempo();
+    moto.dirigirTempo(6);
     moto.buzinar();
     
-    Pessoa larouci ("larouci ", 4);
+    cout << moto << '\n';
+
     moto.descer();
     moto.subir(&larouci);
     moto.comprarTempo(9);
-    moto.dirigirTempo();
+    moto.dirigirTempo(5);
 
     return 0;
 }

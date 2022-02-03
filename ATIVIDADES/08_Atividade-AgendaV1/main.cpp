@@ -27,6 +27,4 @@ int main()
             boca.rmFone(index);
         }
     }
-
-
 }

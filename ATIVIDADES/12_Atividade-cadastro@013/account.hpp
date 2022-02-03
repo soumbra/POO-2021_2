@@ -60,7 +60,7 @@ public:
         return this->type;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Account& a) {
+    friend ostream& operator<<(ostream& os, const Account& a) {
         os << a.id << ':' << a.clientId << ':' << a.balance << ':' << a.type << '\n';
         return os;
     }

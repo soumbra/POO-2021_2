@@ -6,6 +6,18 @@
 class Trampoline{
     list <shared_ptr<Kid>> waiting;
     list <shared_ptr<Kid>> playing;
+
+    shared_ptr<Kid> remove_kid(string name, list<shared_ptr<Kid>>& list) {
+        for (auto& kid : list) {
+            if(kid->getName() == name){
+                shared_ptr<Kid> k = kid;
+                list.remove(kid);
+                return k;
+            }
+        }
+        return nullptr;
+    }
+
 public:
     Trampoline(){}
 
@@ -34,21 +46,18 @@ public:
         }
     }
 
-    bool papaiChegou(string name) {
-        for (auto kid : this->waiting) {
-            if(kid->getName() == name){
-                this->waiting.remove(kid);
-                return true;
-            }
+    shared_ptr<Kid> papaiChegou(string name) {
+        auto k = remove_kid(name, this->waiting);
+        if (k != nullptr) {
+            return k;
         }
 
-        for (auto kid : this->playing) {
-            if(kid->getName() == name){
-                this->playing.remove(kid);
-                return true;
-            }
+        auto k2 = remove_kid(name, this->playing);
+        if (k2 != nullptr) {
+            return k2;
         }
-        return false;
+
+        return nullptr;
     }
     
     friend ostream& operator<<(ostream& os, const Trampoline& t) {

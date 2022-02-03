@@ -7,7 +7,7 @@
 class Lapiseira{
     shared_ptr<Grafite> bico = nullptr;
     float calibre;
-    vector<std::shared_ptr<Grafite>> tambor;
+    vector<shared_ptr<Grafite>> tambor;
 
 public:
     Lapiseira(float calibre) : calibre{calibre} {};
@@ -25,11 +25,11 @@ public:
     }
 
     bool pull() {
-        if(this->bico != nullptr){
+        if (this->bico != nullptr) {
             cout << "Já existe um grafite no bico" << '\n';
             return false;
         }
-        if((int)this->tambor.size() == 0){
+        if ((int)this->tambor.size() == 0) {
             cout << "Tambor vazio" << '\n';
             return false;
         }

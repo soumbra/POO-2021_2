@@ -50,7 +50,7 @@ public:
         return false;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Sala& s) {
+    friend ostream& operator<<(ostream& os, const Sala& s) {
         os << '[' ;
         for (auto it = s.cadeiras.begin(); it != s.cadeiras.end(); ++it) {         
             os << it->first << ":" << *it->second;

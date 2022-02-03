@@ -69,7 +69,7 @@ public:
         }
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const BankAgency& ba) {
+    friend ostream& operator<<(ostream& os, const BankAgency& ba) {
         os << "Clients:\n";
         for (auto it = ba.clients.begin(); it != ba.clients.end(); ++it) {
             os << *it->second;
