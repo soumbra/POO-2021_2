@@ -67,7 +67,7 @@ public:
         this->users.erase(it);
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Controller& c) {
+    friend ostream& operator<<(ostream& os, const Controller& c) {
         for (auto user: c.users) {
             os << *user.second;
         } 

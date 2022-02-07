@@ -65,7 +65,7 @@ public:
         }
     } 
 
-    friend std::ostream& operator<<(std::ostream& os, const Inbox& i) {
+    friend ostream& operator<<(ostream& os, const Inbox& i) {
         os << i.getTimeline() << '\n';
 
         return os;

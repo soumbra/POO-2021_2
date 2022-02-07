@@ -66,7 +66,7 @@ public:
         }
     }
 
-    friend std::ostream& operator<<(std::ostream& os, Lapiseira& l) {
+    friend ostream& operator<<(ostream& os, Lapiseira& l) {
         os << "Calibre: " << l.calibre << " ";
 
         os << "Bico: " ;

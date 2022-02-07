@@ -76,10 +76,10 @@ struct Motinha {
             int res = this->tempo - tempo;
             if (res >= 0) {
                 this->tempo -= tempo;
-                cout << "Voce andou por " << tempo << " minutos" << '\n';
+                cout << "Voce completou o trajeto" << '\n';
             } else {
+                cout << "Tempo acabou antes do fim do trajeto, Voce andou por " << this->tempo << " minutos" << '\n';
                 this->tempo = 0;
-                cout << "Tempo acabou antes do fim do trajeto" << '\n';
             }
         } else {
             cout << "Voce nao pode andar de motinha ou voce nao existe" << '\n';
@@ -110,8 +110,8 @@ int main()
     Motinha moto(7);
     moto.subir(&jorjin);
     moto.subir(&larouci);
-    moto.comprarTempo(5);
-    moto.dirigirTempo(6);
+    moto.comprarTempo(10);
+    moto.dirigirTempo(12);
     moto.buzinar();
     
     cout << moto << '\n';

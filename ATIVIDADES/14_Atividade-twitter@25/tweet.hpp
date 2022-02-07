@@ -59,7 +59,7 @@ public:
         this->likes.clear();
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Tweet& t) {
+    friend ostream& operator<<(ostream& os, const Tweet& t) {
         os << t.id << ':' << t.username << ':' << '(' << t.message << ')';
         
         if ((int)t.likes.size() > 0){

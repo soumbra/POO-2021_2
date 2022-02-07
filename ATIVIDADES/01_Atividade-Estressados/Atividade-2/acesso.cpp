@@ -5,7 +5,7 @@
 
 using namespace std;
 
-std::ostream& operator<<(std::ostream& os, const std::vector<int>& v) 
+ostream& operator<<(ostream& os, const vector<int>& v) 
 {
     os << "[ ";
     for (int i = 0; i < (int) v.size(); i++) {

@@ -20,7 +20,7 @@ public:
         return this->id;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, Client cliente) {
+    friend ostream& operator<<(std::ostream& os, Client cliente) {
         os << "Telefone:" << cliente.fone << " Id:" << cliente.id << '\n';
         return os;
     }

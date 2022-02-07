@@ -79,7 +79,7 @@ public:
         this->followers.clear();
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const User& u) {
+    friend ostream& operator<<(ostream& os, const User& u) {
         os << u.username << '\n';
         os << "     Seguidos ";
         os << '[';

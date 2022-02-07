@@ -37,7 +37,7 @@ public:
         return 0;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Grafite& grafite) {
+    friend ostream& operator<<(ostream& os, const Grafite& grafite) {
         os << "[Calibre: " << grafite.calibre << " mm, ";
         os << "Dureza: " << grafite.dureza << ", ";
         os << "Tamanho: " << grafite.tamanho << " mm] \n";

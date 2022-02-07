@@ -12,7 +12,7 @@ public:
         age{age}, name{name} {
     }
 
-    friend std::ostream& operator <<(std::ostream& os, const Kid& kid) {
+    friend ostream& operator <<(ostream& os, const Kid& kid) {
         os << "Nome: " << kid.name << " ";
         os << "Idade: " << kid.age << " anos";
 

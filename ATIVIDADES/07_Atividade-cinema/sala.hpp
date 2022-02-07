@@ -62,7 +62,7 @@ public:
         return this->cadeiras;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const Sala& s) {
+    friend ostream& operator<<(std::ostream& os, const Sala& s) {
         for (int i = 0; i < (int) s.cadeiras.size(); i++) {
             auto& cadeira = s.cadeiras[i];
             os << i << ":" ;
