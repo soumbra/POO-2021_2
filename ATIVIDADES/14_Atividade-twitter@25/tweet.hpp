@@ -77,7 +77,7 @@ public:
         return os;
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const vector<Tweet*>& v) {
+    friend ostream& operator<<(ostream& os, const vector<Tweet*>& v) {
         for (auto message : v ) {
             os << *message << '\n';
         }
